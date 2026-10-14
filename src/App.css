@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+:focus-visible { outline: 2px solid #D4A574; outline-offset: 3px; border-radius: 4px; }
+.touch-min { min-height: 48px; min-width: 48px; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.shimmer-bar {
+  background: linear-gradient(90deg, transparent 0%, rgba(236,146,71,0.35) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Pulse — soft warm orange glow centered on each captured photo while the
+   AI reads it. Four photos in a 2x2 grid; each photo's pulse is offset by
+   index so the rhythm feels like attention moving across them, not strobing. */
+.scan-pulse {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle at center, rgba(236,146,71,0.55), transparent 65%);
+  filter: blur(14px);
+  opacity: 0;
+  animation: scanPulse 2.6s ease-in-out infinite;
+}
+@keyframes scanPulse {
+  0%, 100% { opacity: 0;    transform: scale(0.85); }
+  50%      { opacity: 0.9;  transform: scale(1.08); }
+}
